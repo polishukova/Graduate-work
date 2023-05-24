@@ -1,1 +1,1 @@
-# Graduate work for for TeachMeSkills courses in the specialty front-end developer :)
+# Graduate work for TeachMeSkills courses in the specialty front-end developer :)
