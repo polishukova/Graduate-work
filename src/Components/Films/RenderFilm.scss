@@ -1,0 +1,22 @@
+.films {
+    width: 18%;
+
+    @media (max-width: 1200px) {
+        width: 31%;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.films-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.films-info {
+    color: white;
+    font-size: 10px;
+    padding: 10px 0;
+}

@@ -1,21 +1,40 @@
-import { Link } from 'react-router-dom'
-import './Registration.css'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import './Registration.scss'
+import { Title } from '../Title/Title'
+import { useState } from 'react'
+import { useAppDispatch } from '../../Store/store'
+import { setUserEmail, setUserName, setUserPassword } from '../../Store/auth'
 
 export const Registration = () => {
+    const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+
+    const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     return (
-        <div className='reg-wrapper'>
-        <h2 className='reg-title'>Sign Up</h2>
-        <p className='reg-text'>Name</p>
-        <input className='reg-input' type='text' placeholder="Your Name"></input>
-        <p className='reg-text'>Email</p>
-        <input className='reg-input' type='text' placeholder="Your Email"></input>
-        <p className='reg-text'>Password</p>
-        <input className='reg-input' type='password' placeholder="Your Password"></input>
-        <p className='reg-text'>Confirm password</p>
-        <input className='reg-input' type='password' placeholder="Your Password"></input>
-        <button className='reg-button'>Sign Up</button>
-        <p className='reg-footer'>Already have an account? <Link className='auth-link' to='/Auth'>Sign In</Link></p>
-    </div>
+        <div className='wrapper-reg container'>
+            <Title />
+            <form className='reg'>
+                <legend className='reg-title'>Sign Up</legend>
+                <label className='reg-text'>Name</label>
+                <input className='reg-input' type='text' placeholder="Your Name" value={name} onChange={(e) => {setName(e.target.value)}}></input>
+                <label className='reg-text'>Email</label>
+                <input className='reg-input' type='text' placeholder="Your Email" value={email} onChange={(e) => {setEmail(e.target.value)}}></input>
+                <label className='reg-text'>Password</label>
+                <input className='reg-input' type='password' placeholder="Your Password" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
+                <label className='reg-text'>Confirm password</label>
+                <input className='reg-input' type='password' placeholder="Your Password"></input>
+                <button className='reg-button' onClick={(e) => {
+e.preventDefault();
+dispatch(setUserName(name));
+dispatch(setUserEmail(email));
+dispatch(setUserPassword(password));
+navigate('/auth')
+                }}>Sign Up</button>
+                <p className='reg-footer'>Already have an account? <Link className='auth-link' to='/auth'>Sign In</Link></p>
+            </form>
+        </div>
     )
 }

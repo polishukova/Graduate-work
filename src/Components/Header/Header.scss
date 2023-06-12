@@ -1,0 +1,19 @@
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    gap: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    @media (max-width: 1200px) {
+        padding: 20px 30px;
+    }
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 30px;
+    }
+}

@@ -1,0 +1,18 @@
+.menu {
+    color: #80858B;
+    max-width: 200px;
+}
+
+.menu-item {
+    margin-bottom: 22px;
+    display: flex;
+}
+
+.menu-item:hover {
+color: #20B2AA;
+}
+
+.menu-item p {
+    margin: auto 0;
+    padding-left: 8px;
+}

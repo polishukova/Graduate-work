@@ -1,0 +1,20 @@
+.main-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.main-menu {
+    width: 15%;
+
+    @media (max-width: 1200px) {
+        display: none;
+    }
+}
+
+.main-films {
+    width: 85%;
+
+    @media (max-width: 1200px) {
+        width: 100%;
+    }
+}

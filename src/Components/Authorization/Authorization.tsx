@@ -1,18 +1,33 @@
-import { Link } from 'react-router-dom'
-import './Authorization.css'
+import { Link, useNavigate } from 'react-router-dom'
+import './Authorization.scss'
+import { Title } from '../Title/Title'
+import { useAppSelector } from '../../Store/store'
+import { useState } from 'react'
 
 export const Authorization = () => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
+    const userEmail = useAppSelector(state => state.auth.userEmail)
+    const userPassword = useAppSelector(state => state.auth.userPassword)
+
+    const navigate = useNavigate()
 
     return (
-        <div className='auth-wrapper'>
-            <h2 className='auth-title'>Sign In</h2>
-            <p className='auth-text'>Email</p>
-            <input className='auth-input' type='text' placeholder="Your Email"></input>
-            <p className='auth-text'>Password</p>
-            <input className='auth-input' type='password' placeholder="Your Password"></input>
-            <button className='auth-button'>Sign In</button>
-            <p className='auth-footer'>Don't have an account? <Link className='auth-link' to='/Reg'>Sign Up</Link></p>
+        <div className='wrapper-auth container'>
+            <Title />
+            <form className='auth'>
+                <legend className='auth-title'>Sign In</legend>
+                <label className='auth-text'>Email</label>
+                <input className='auth-input' type='text' placeholder="Your Email" value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                <label className='auth-text'>Password</label>
+                <input className='auth-input' type='password' placeholder="Your Password" value={password} onChange={(e) => { setPassword(e.target.value) }}></input>
+                <button className='auth-button' onClick={(e) =>{
+                    e.preventDefault();
+                    email===userEmail && password===userPassword ? navigate('/main') : alert('Wrong email or password');
+                }}>Sign In</button>
+                <p className='auth-footer'>Don't have an account? <Link className='auth-link' to='/reg'>Sign Up</Link></p>
+            </form>
         </div>
     )
 }

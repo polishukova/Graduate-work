@@ -1,10 +1,18 @@
 import { Navigation } from "./Components/Navigation/Navigation";
-import "./App.css"
+import "./App.scss"
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import { store } from "./Store/store";
 
-export const App = () => (
+export const App = () => {
 
-    <BrowserRouter>
-        <Navigation />
-    </BrowserRouter>
-)
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <Navigation />
+            </BrowserRouter>
+        </Provider>
+    )
+
+}
+
