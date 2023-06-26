@@ -1,5 +1,6 @@
 .films {
     width: 18%;
+    position: relative;
 
     @media (max-width: 1200px) {
         width: 31%;
@@ -10,13 +11,46 @@
     }
 }
 
+.films:hover {
+    border: 1px solid transparent;
+    opacity: 0.7;
+}
+
 .films-img img {
     width: 100%;
     border-radius: 10px;
 }
 
-.films-info {
+.films-title {
     color: white;
-    font-size: 10px;
+    font-size: 15px;
     padding: 10px 0;
+}
+
+.films-genre {
+    color: #AFB2B6;
+    font-size: 11px;
+}
+
+.films-rating {
+    width: 25px;
+    padding: 5px;
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    border-radius: 5px;
+    font-size: 10px;
+    color: white;
+}
+
+.hight-rating {
+    background-color: #00A340;
+}
+
+.middle-rating {
+    background-color: #F3A608;
+}
+
+.low-rating {
+    background-color: #F45D2D;
 }

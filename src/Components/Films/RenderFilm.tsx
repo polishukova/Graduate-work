@@ -1,40 +1,34 @@
-import { useEffect, useState } from "react"
-import { getGenres, OneFilm } from "./getFilms"
+import { OneFilmWithGenre } from "./getFilms"
 import './RenderFilm.scss'
+import { Link } from "react-router-dom"
 
-const IMG = "https://image.tmdb.org/t/p/w500/"
+export const IMG = "https://image.tmdb.org/t/p/w500/"
 
-export const RenderFilm = (props: { film: OneFilm }) => {
-    // const { postId } = useParams()
-    // const [onePost, setOnePost] = useState(props.post)
-    // const theme = useContext(ThemeContext)
+export const RenderFilm = ({ oneFilm }: { oneFilm?: OneFilmWithGenre }) => {
 
-    // useEffect(() => {
-    //     postId && getPost(postId).then(resp => setOnePost(resp))
-    // }, [postId])
+    const genres = oneFilm?.genre.join(' · ')
 
-    // if (!onePost) return null
+    const RatingFilm = (rating: number) => {
+        let newRating = +rating.toFixed(1);
+        if (newRating < 5) return <div className="films-rating low-rating">{newRating}</div>
+        if (newRating >= 5 && newRating <= 7) return <div className="films-rating middle-rating">{newRating}</div>
+        if (newRating > 7) return <div className="films-rating hight-rating">{newRating}</div>
+    }
 
-    
-    // const [genre, setGenre] = useState()
-    // useEffect(() => {getGenres().then((resp) => setGenre(resp))}, [])
-
-    // const arr = []
-    // console.log(genre)
-    // genre.map(obj => {
-    //     if (obj.id===props.film.genre_ids)
-    // })
+    if (!oneFilm) return null
 
     return (
         <div className="films">
-            <div className="films-img">
-                <img src={IMG + props.film.poster_path} alt={'img'}></img>
-            </div>
-            <div className='films-info'>
-                <h3 className="films-title">{props.film.title}</h3>
-                <p className="films-genre">{
-                }</p>
-            </div>
+            <>{RatingFilm(oneFilm.vote_average)}</>
+            <Link to={'/films/' + oneFilm.id}>
+                <div className="films-img">
+                    <img src={IMG + oneFilm.poster_path} alt={'img'}></img>
+                </div>
+                <div className='films-info'>
+                    <h3 className="films-title">{oneFilm.title}</h3>
+                    <p className="films-genre">{genres}</p>
+                </div>
+            </Link>
         </div>
     )
 }

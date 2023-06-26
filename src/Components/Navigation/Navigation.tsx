@@ -9,9 +9,11 @@ export const Navigation = () => {
     return (
         <>
             <Routes>
-                <Route index path='main' element={<MainPage />} />
+                <Route path='*' element={<MainPage />} />
                 <Route path='auth' element={<Authorization />} />
                 <Route path='reg' element={<Registration />} />
+                <Route path='films/*' element={<MainPage />}>
+                </Route>
             </Routes>
         </>
     )

@@ -1,10 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux/es/exports'
 import { authReducer } from './auth'
-// import { postsReducer } from './post'
+import { filmsReducer } from './films'
+import { genresReducer } from './genres'
+import { searchReducer } from './search'
 
 export const store = configureStore({
-    reducer: {auth: authReducer},
+    reducer: {
+        auth: authReducer,
+        films: filmsReducer,
+        genres: genresReducer,
+        search: searchReducer,
+    },
 })
 
 export type RootState = ReturnType<typeof store.getState>

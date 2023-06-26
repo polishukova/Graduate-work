@@ -1,0 +1,54 @@
+.one-film__wrapper {
+    display: flex;
+    gap: 30px;
+    color:white;
+
+    @media (max-width: 768px) {
+        display: block;
+    }
+}
+
+.one-film__img {
+    width: 250px;
+    @media (max-width: 768px) {
+        width: 320px;
+    }
+}
+
+.one-film__img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.one-film__genres {
+    color: #AFB2B6;
+}
+
+.one-film__title {
+    padding: 20px 0;
+}
+
+.one-film__ratings {
+    display: flex;
+    gap: 10px;
+}
+
+.one-film__rating {
+    width: 33px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.one-film__rating-imdb, .one-film__runtime {
+    background-color: #323537;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.one-film__overview {
+    padding: 35px 0 25px;
+}
+
+.one-film__table {
+    border-spacing: 10px 20px;
+}

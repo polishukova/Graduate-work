@@ -1,16 +1,37 @@
-import { useEffect, useState } from 'react'
-import './AllFilms.css'
-import { OneFilm, getFilms } from './getFilms'
+import { useEffect} from 'react'
+import './AllFilms.scss'
+import { OneGenre, getFilms, getGenres } from './getFilms'
 import { RenderFilm } from './RenderFilm'
+import { useAppDispatch, useAppSelector } from '../../Store/store'
+import { setFilms } from '../../Store/films'
+import { setGenres } from '../../Store/genres'
+import { ShowMore } from '../ShowMore/ShowMore'
 
 export const AllFilms = () => {
-    const [films, setFilms] = useState<OneFilm[]>([])
+    const filmsList = useAppSelector(state => {
+        const genresIdsToNames = (genresIds: number[]) => genresIds.map(genreIdToName);
+        const genres: OneGenre[] = state.genres.genres
+        const genreIdToName = (genreId : number) => genres.find(({ id }) => id === genreId)?.name
+        return state.films.films.map(film => ({ ...film, genre: genresIdsToNames(film.genre_ids) }))
+    })
 
-    useEffect(() => {getFilms().then((resp) => setFilms(resp))}, [])
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {getFilms().then((resp) => dispatch(setFilms(resp.results)))}, [])
+
+    useEffect(() => {getGenres().then((resp) => dispatch(setGenres(resp)))}, [])
+
+const searchResult = useAppSelector(state => state.search.search)
+console.log("🚀 ~ file: AllFilms.tsx:25 ~ AllFilms ~ searchResult:", searchResult)
 
     return (
+        <>
         <div className="films-wrapper">
-        {films.map(film => <RenderFilm film={film} key={film.id} />)	 }
+        {filmsList.map(film => <RenderFilm oneFilm={film} key={film.id} />)	 }
         </div>
+        <div className='show-more-wrapper'>
+            <ShowMore/>
+        </div>
+        </>
     )
 }

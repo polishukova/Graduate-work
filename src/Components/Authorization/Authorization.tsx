@@ -24,7 +24,7 @@ export const Authorization = () => {
                 <input className='auth-input' type='password' placeholder="Your Password" value={password} onChange={(e) => { setPassword(e.target.value) }}></input>
                 <button className='auth-button' onClick={(e) =>{
                     e.preventDefault();
-                    email===userEmail && password===userPassword ? navigate('/main') : alert('Wrong email or password');
+                    email===userEmail && password===userPassword ? navigate('/films') : alert('Wrong email or password');
                 }}>Sign In</button>
                 <p className='auth-footer'>Don't have an account? <Link className='auth-link' to='/reg'>Sign Up</Link></p>
             </form>

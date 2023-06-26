@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Registration.scss'
 import { Title } from '../Title/Title'
 import { useState } from 'react'
@@ -9,6 +9,7 @@ export const Registration = () => {
     const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -25,13 +26,16 @@ export const Registration = () => {
                 <label className='reg-text'>Password</label>
                 <input className='reg-input' type='password' placeholder="Your Password" value={password} onChange={(e) => {setPassword(e.target.value)}}></input>
                 <label className='reg-text'>Confirm password</label>
-                <input className='reg-input' type='password' placeholder="Your Password"></input>
+                <input className='reg-input' type='password' placeholder="Your Password" value={confirmPassword} onChange={(e) => {setConfirmPassword(e.target.value)}}></input>
                 <button className='reg-button' onClick={(e) => {
 e.preventDefault();
 dispatch(setUserName(name));
 dispatch(setUserEmail(email));
-dispatch(setUserPassword(password));
-navigate('/auth')
+if (password===confirmPassword) {
+    dispatch(setUserPassword(password));
+    navigate('/auth')
+}
+else alert('Password mismatch')
                 }}>Sign Up</button>
                 <p className='reg-footer'>Already have an account? <Link className='auth-link' to='/auth'>Sign In</Link></p>
             </form>
