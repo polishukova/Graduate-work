@@ -52,3 +52,27 @@
 .one-film__table {
     border-spacing: 10px 20px;
 }
+
+.one-film__favorites {
+    width: 250px;
+}
+
+.one-film__button {
+    background-color: #323537;
+    width: 50%;
+    padding: 10px 0;
+    border: none;
+}
+
+.one-film__button:first-child {
+    border-radius: 10px 0 0 10px;
+    border-right: 1px solid black;
+}
+
+.one-film__button:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.one-film__button:focus {
+    border: 1px solid #20B2AA;
+}

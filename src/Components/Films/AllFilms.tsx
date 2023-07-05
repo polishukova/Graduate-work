@@ -1,9 +1,9 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import './AllFilms.scss'
 import { OneGenre, getFilms, getGenres } from './getFilms'
 import { RenderFilm } from './RenderFilm'
 import { useAppDispatch, useAppSelector } from '../../Store/store'
-import { setFilms } from '../../Store/films'
+import { getFilmsThunk, setFilms } from '../../Store/films'
 import { setGenres } from '../../Store/genres'
 import { ShowMore } from '../ShowMore/ShowMore'
 
@@ -11,27 +11,28 @@ export const AllFilms = () => {
     const filmsList = useAppSelector(state => {
         const genresIdsToNames = (genresIds: number[]) => genresIds.map(genreIdToName);
         const genres: OneGenre[] = state.genres.genres
-        const genreIdToName = (genreId : number) => genres.find(({ id }) => id === genreId)?.name
+        const genreIdToName = (genreId: number) => genres.find(({ id }) => id === genreId)?.name
         return state.films.films.map(film => ({ ...film, genre: genresIdsToNames(film.genre_ids) }))
     })
+    console.log("🚀 ~ file: AllFilms.tsx:17 ~ filmsList ~ filmsList:", filmsList)
 
     const dispatch = useAppDispatch()
 
-    useEffect(() => {getFilms().then((resp) => dispatch(setFilms(resp.results)))}, [])
+    // useEffect(() => { getFilms().then((resp) => dispatch(setFilms(resp.results))) }, [])
 
-    useEffect(() => {getGenres().then((resp) => dispatch(setGenres(resp)))}, [])
+    useEffect(() => { getGenres().then((resp) => dispatch(setGenres(resp))) }, [])
 
-const searchResult = useAppSelector(state => state.search.search)
-console.log("🚀 ~ file: AllFilms.tsx:25 ~ AllFilms ~ searchResult:", searchResult)
+    useEffect(() => { getFilms().then((resp) => dispatch(setFilms(resp.results))) || dispatch(getFilmsThunk({}))}, [])
 
     return (
         <>
-        <div className="films-wrapper">
-        {filmsList.map(film => <RenderFilm oneFilm={film} key={film.id} />)	 }
-        </div>
-        <div className='show-more-wrapper'>
-            <ShowMore/>
-        </div>
+            <div className="films-wrapper">
+                {!filmsList.length && <span className='not-found'>Not found</span>}
+                {filmsList.map(film => <RenderFilm oneFilm={film} key={film.id} />)}
+            </div>
+            <div className='show-more-wrapper'>
+                <ShowMore />
+            </div>
         </>
     )
 }

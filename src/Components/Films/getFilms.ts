@@ -1,7 +1,8 @@
 const FILMS = 'https://api.themoviedb.org/3/trending/movie/day';
 const GENRES = 'https://api.themoviedb.org/3/genre/movie/list';
-const FINDBYID = 'https://api.themoviedb.org/3/movie'
-const FINDBYSEARCH = 'https://api.themoviedb.org/3/search/movie'
+const FINDBYID = 'https://api.themoviedb.org/3/movie';
+const FINDBYSEARCH = 'https://api.themoviedb.org/3/search/movie';
+const POPULARFILMS = 'https://api.themoviedb.org/3/movie/popular';
 
 export type OneFilm = {
     genre_ids: number[],
@@ -9,9 +10,12 @@ export type OneFilm = {
     title: string,
     poster_path: string,
     vote_average: number,
+    favorite: boolean,
 };
 
 export type OneFilmWithGenre = OneFilm & { genre: (string | undefined)[] };
+
+export type OneFilmWithFavorite = OneFilm & { favorite: (boolean)}
 
 export type Response = {
     page: number,
@@ -98,7 +102,7 @@ type SearchParams = { search?: string }
 
 export const getFilmsBySearch = async ({ search }: SearchParams) => {
     const filmsUrl = new URL(FINDBYSEARCH);
-    filmsUrl.searchParams.set("search", String(search));
+    if (search) filmsUrl.searchParams.set("query", String(search));
     const options = {
         method: 'GET',
         headers: {
@@ -109,5 +113,21 @@ export const getFilmsBySearch = async ({ search }: SearchParams) => {
 
     const response = await fetch(filmsUrl, options);
     const result: Response = await response.json();
-    return result
+    return result.results
 }
+
+export const getPopularFilms = async () => {
+    const filmsUrl = new URL(POPULARFILMS);
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhYzc1ZDIyMDYyMDY2NGFkZjM5MGZjYTU1NjIwMDA0ZiIsInN1YiI6IjY0N2M3NjVlMGUyOWEyMDExNmFkNDU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ihZhctfHnZABpjMVWFHZMMvNEZG6rMdJ5plj0SAbsag'
+        }
+    };
+
+    const response = await fetch(filmsUrl, options);
+    const result: Response = await response.json();
+    return result.results
+}
+

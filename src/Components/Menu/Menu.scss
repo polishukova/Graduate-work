@@ -6,11 +6,12 @@
 .menu-item {
     margin-bottom: 22px;
     display: flex;
+    color: white;
 }
 
 .menu-item:hover {
-color: #20B2AA;
-cursor: pointer;
+    color: #20B2AA;
+    cursor: pointer;
 }
 
 .menu-item p {
