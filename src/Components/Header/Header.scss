@@ -5,6 +5,7 @@
     gap: 10px;
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
 
     @media (max-width: 1200px) {
         padding: 20px 30px;
@@ -16,4 +17,38 @@
         gap: 20px;
         padding-bottom: 30px;
     }
+}
+
+.header-button {
+    display: none;
+
+    @media (max-width: 1200px) {
+        display: block;
+        background-color:#20B2AA;
+        height: 50px;
+        width: 50px;
+        border: none;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 768px) {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        z-index: 3;
+    }
+}
+
+.header-span {
+    border: none;
+    background-color: white;
+    color: white;
+    height: 2px;
+    width: 20px;
+    margin: 5px auto;
+}
+
+.header-close-span {
+    color: white;
+    font-size: 25px;
 }

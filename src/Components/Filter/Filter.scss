@@ -1,0 +1,82 @@
+.show-filter {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #242426;
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 30px;
+    border-radius: 10px 0 0 10px;
+    z-index: 5;
+}
+
+.hide-filter {
+display: none;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-close-button {
+    max-height: 30px;
+    color: #AFB2B6;
+    font-size: 22px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-sort-by {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 0 20px;
+}
+
+.filter-button-wrapper {
+margin: 15px 0;
+}
+
+.filter-sort-button {
+    background-color: #242426;
+    width: 50%;
+    padding: 10px 0;
+    border: 1px solid #323537;
+    color: #80858B;
+}
+
+.filter-sort-button:first-child {
+    border-radius: 10px 0 0 10px;
+    border-right: 1px solid black;
+}
+
+.filter-sort-button:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.filter-sort-button:focus {
+    background-color: #323537;
+    color: white;
+    width: 50%;
+    padding: 10px 0;
+    border: 1px solid #323537;
+}
+
+.filter-by-genres {
+    padding-top: 15px;
+}
+
+.button-show-results {
+    position: absolute;
+    bottom: 30px;
+    width: 85%;
+    color: white;
+    background-color: #20B2AA;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+}

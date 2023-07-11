@@ -10,6 +10,7 @@ export type OneFilm = {
     title: string,
     poster_path: string,
     vote_average: number,
+    release_date: string,
     favorite: boolean,
 };
 
@@ -35,7 +36,7 @@ export const getFilms = async (page?: number) => {
         }
     };
     const response = await fetch(filmsUrl, options);
-    const result: Response = await response.json();
+    const result: Response = await response.json();    
     return result
 };
 
@@ -69,8 +70,6 @@ export const getFilm = async (filmId: string) => {
     };
     const response = await fetch(filmsUrl, options);
     const result: FilmForSinglePage = await response.json();
-    console.log("🚀 ~ file: getFilms.ts:48 ~ getFilm ~ result:", result)
-
     return result
 }
 

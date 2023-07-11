@@ -3,7 +3,7 @@ import './AllFilms.scss'
 import { OneGenre, getFilms, getGenres } from './getFilms'
 import { RenderFilm } from './RenderFilm'
 import { useAppDispatch, useAppSelector } from '../../Store/store'
-import { getFilmsThunk, setFilms } from '../../Store/films'
+import { setFilms } from '../../Store/films'
 import { setGenres } from '../../Store/genres'
 import { ShowMore } from '../ShowMore/ShowMore'
 
@@ -14,15 +14,12 @@ export const AllFilms = () => {
         const genreIdToName = (genreId: number) => genres.find(({ id }) => id === genreId)?.name
         return state.films.films.map(film => ({ ...film, genre: genresIdsToNames(film.genre_ids) }))
     })
-    console.log("🚀 ~ file: AllFilms.tsx:17 ~ filmsList ~ filmsList:", filmsList)
 
     const dispatch = useAppDispatch()
 
-    // useEffect(() => { getFilms().then((resp) => dispatch(setFilms(resp.results))) }, [])
+    useEffect(() => { getFilms().then((resp) => dispatch(setFilms(resp.results))) }, [])
 
     useEffect(() => { getGenres().then((resp) => dispatch(setGenres(resp))) }, [])
-
-    useEffect(() => { getFilms().then((resp) => dispatch(setFilms(resp.results))) || dispatch(getFilmsThunk({}))}, [])
 
     return (
         <>

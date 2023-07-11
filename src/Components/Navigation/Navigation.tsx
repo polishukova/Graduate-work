@@ -12,8 +12,7 @@ export const Navigation = () => {
                 <Route path='*' element={<MainPage />} />
                 <Route path='auth' element={<Authorization />} />
                 <Route path='reg' element={<Registration />} />
-                <Route path='films/*' element={<MainPage />}>
-                </Route>
+                <Route path='films/*' element={<MainPage />}/>
             </Routes>
         </>
     )

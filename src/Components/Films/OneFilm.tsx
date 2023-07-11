@@ -3,8 +3,7 @@ import { IMG } from "./RenderFilm"
 import { useEffect, useState } from "react"
 import { FilmForSinglePage, getFilm } from "./getFilms"
 import './OneFilm.scss'
-import BookmarkIcon from '@mui/icons-material/Bookmark';
-import ShareIcon from '@mui/icons-material/Share';
+import { AddToFavorites } from "../AddToFavorites/AddToFavorites"
 
 
 export const RenderOneFilm = () => {
@@ -30,6 +29,8 @@ export const RenderOneFilm = () => {
     .replace(/^([^T]+)T(.+)$/,'$1')
     .replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1')
 
+    console.log(oneFilm.release_date)
+
     const countries = oneFilm.production_countries.map(country => country.name).join(', ')
 
     const companies = oneFilm.production_companies.map(company => company.name).join(', ')
@@ -43,8 +44,7 @@ export const RenderOneFilm = () => {
                     <img src={IMG + oneFilm.poster_path} alt={'img'}></img>
                 </div>
                 <div className="one-film__favorites">
-                    <button className="one-film__button"><BookmarkIcon sx={{ color: "#AFB2B6", fontSize: 26 }}/></button>
-                    <button className="one-film__button"><ShareIcon sx={{ color: "#AFB2B6", fontSize: 26 }}/></button>
+                    <AddToFavorites filmId={oneFilm.id}/>
                 </div>
             </div>
             <div className="one-film__info">

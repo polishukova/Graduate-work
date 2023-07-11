@@ -1,12 +1,20 @@
 .menu {
     color: #80858B;
     max-width: 200px;
+
+    @media (max-width: 1200px) {
+        padding: 20px 20px 0;
+    }
 }
 
 .menu-item {
     margin-bottom: 22px;
     display: flex;
     color: white;
+
+    @media (max-width: 1200px) {
+        font-size: 24px;
+    }
 }
 
 .menu-item:hover {
