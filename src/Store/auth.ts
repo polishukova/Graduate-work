@@ -17,15 +17,15 @@ export const authSlice = createSlice({
     initialState,
     reducers: {
         setUserName: (state, action: PayloadAction<string>) => {
-			state.userName = action.payload
+            state.userName = action.payload
             console.log(state.userName)
-		},
+        },
         setUserEmail: (state, action: PayloadAction<string>) => {
-			state.userEmail = action.payload
-		},
+            state.userEmail = action.payload
+        },
         setUserPassword: (state, action: PayloadAction<string>) => {
-			state.userPassword = action.payload
-		},
+            state.userPassword = action.payload
+        },
 
     }
 })

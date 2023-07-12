@@ -1,7 +1,7 @@
 .one-film__wrapper {
     display: flex;
     gap: 30px;
-    color:white;
+    color: white;
 
     @media (max-width: 768px) {
         display: block;
@@ -44,7 +44,8 @@
     border-radius: 5px;
 }
 
-.one-film__rating-imdb, .one-film__runtime {
+.one-film__rating-imdb,
+.one-film__runtime {
     background-color: #323537;
     border-radius: 5px;
     padding: 5px;

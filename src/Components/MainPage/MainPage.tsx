@@ -20,7 +20,7 @@ export const MainPage = () => {
             <Header touched handleClick={onBurgerButtonClick} />
             <div className='container main-wrapper'>
                 <div className='main-menu'>
-                {showMenu && <Menu />}
+                    {showMenu && <Menu />}
                 </div>
                 <div className='main-films'>
                     <Routes>

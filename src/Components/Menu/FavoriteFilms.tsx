@@ -8,15 +8,15 @@ export const FavoriteFilms = () => {
         const genresIdsToNames = (genresIds: number[]) => genresIds.map(genreIdToName);
         const genres: OneGenre[] = state.genres.genres
         const genreIdToName = (genreId: number) => genres.find(({ id }) => id === genreId)?.name
-        return state.films.films.map(film => ({ ...film, genre: genresIdsToNames(film.genre_ids)}))
-})
+        return state.films.films.map(film => ({ ...film, genre: genresIdsToNames(film.genre_ids) }))
+    })
 
-const favFilms = films.filter(film => film.favorite)
+    const favFilms = films.filter(film => film.favorite)
 
     return (
         <div className="films-wrapper">
-        {!favFilms.length && <span className='not-found'>No favorite films</span>}
-        {favFilms.map(film => <RenderFilm oneFilm={film} key={film.id} />)}
+            {!favFilms.length && <span className='not-found'>No favorite films</span>}
+            {favFilms.map(film => <RenderFilm oneFilm={film} key={film.id} />)}
         </div>
     )
 }

@@ -19,16 +19,16 @@ export const Header = ({ touched, handleClick }: Props) => {
 
     return (
         <div className='header-wrapper'>
-                <Title />
-                <Search/>
-                <User/>
-                <button className='header-button' onClick={click}>
+            <Title />
+            <Search />
+            <User />
+            <button className='header-button' onClick={click}>
                 {isTouched ? <>
-                <hr className='header-span'></hr>
-                <hr className='header-span'></hr>
-                <hr className='header-span'></hr></> :
-                <span className='header-close-span'>✖</span>}
-                </button>
+                    <hr className='header-span'></hr>
+                    <hr className='header-span'></hr>
+                    <hr className='header-span'></hr></> :
+                    <span className='header-close-span'>✖</span>}
+            </button>
         </div>
     )
 }

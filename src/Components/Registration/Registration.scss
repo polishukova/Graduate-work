@@ -1,7 +1,15 @@
 .wrapper-reg {
-    // background: url("/public/desk.jpg") no-repeat center/cover;
+    background: url("../../Assets/Image/desk.jpg") no-repeat center/cover;
     position: relative;
     height: 700px;
+
+    @media (max-width: 1200px) {
+        height: 1400px;
+    }
+
+    @media (max-width: 768px) {
+        height: 900px;
+    }
 }
 
 .wrapper-auth::before {
@@ -14,6 +22,10 @@
     z-index: 1;
     top: 0;
     left: 0;
+
+    @media (max-width: 1200px) {
+        height: 1400px;
+    }
 }
 
 .reg {
@@ -21,7 +33,7 @@
     flex-direction: column;
     max-width: 500px;
     padding: 40px;
-    margin: 50px auto;
+    margin: 20px auto;
     background: #242426;
     position: relative;
     z-index: 2;
@@ -34,6 +46,10 @@
     margin: 10px 0;
     padding: 0 20px;
     border-radius: 10px;
+
+    @media (max-width: 768px) {
+        height: 40px;
+    }
 }
 
 .reg-button {
@@ -49,27 +65,27 @@
     border-radius: 10px;
 }
 
-.reg-button:hover{
-    background-color:#28d7ce
+.reg-button:hover {
+    background-color: #28d7ce
 }
 
-.reg-title{
-    color:white;
+.reg-title {
+    color: white;
     padding-bottom: 30px;
 }
 
-.reg-footer{
-    color:white;
+.reg-footer {
+    color: white;
     text-align: center;
     padding-top: 20px;
     font-size: 14px;
 }
 
-.reg-text{
-    color:white;
+.reg-text {
+    color: white;
     font-size: 12px;
 }
 
-.reg-link{
-    color:#20B2AA
+.reg-link {
+    color: #20B2AA
 }

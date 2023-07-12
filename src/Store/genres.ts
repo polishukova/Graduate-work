@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { OneGenre } from "../Components/Films/getFilms"
 
-const initialState: { genres: OneGenre []} = { genres: []}
+const initialState: { genres: OneGenre[] } = { genres: [] }
 
 export const genresSlice = createSlice({
     name: 'genres',

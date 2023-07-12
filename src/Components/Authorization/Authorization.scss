@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     max-width: 500px;
-    /* max-height: 450px; */
     padding: 40px;
     margin: 50px auto;
     background: #242426;
@@ -12,9 +11,17 @@
 }
 
 .wrapper-auth {
-    // background: url("/public/desk.jpg") no-repeat center/cover;
+    background: url("../../Assets/Image/desk.jpg") no-repeat center/cover;
     position: relative;
     height: 700px;
+
+    @media (max-width: 1200px) {
+        height: 1400px;
+    }
+
+    @media (max-width: 768px) {
+        height: 900px;
+    }
 }
 
 .wrapper-auth::before {
@@ -27,6 +34,10 @@
     z-index: 1;
     top: 0;
     left: 0;
+
+    @media (max-width: 1200px) {
+        height: 1400px;
+    }
 }
 
 .auth-input {
@@ -35,6 +46,10 @@
     margin: 10px 0;
     padding: 0 20px;
     border-radius: 10px;
+
+    @media (max-width: 768px) {
+        height: 40px;
+    }
 }
 
 .auth-button {
@@ -50,27 +65,27 @@
     border-radius: 10px;
 }
 
-.auth-button:hover{
-    background-color:#28d7ce
+.auth-button:hover {
+    background-color: #28d7ce
 }
 
-.auth-title{
-    color:white;
+.auth-title {
+    color: white;
     padding-bottom: 30px;
 }
 
-.auth-footer{
-    color:white;
+.auth-footer {
+    color: white;
     text-align: center;
     padding-top: 20px;
     font-size: 14px;
 }
 
-.auth-text{
-    color:white;
+.auth-text {
+    color: white;
     font-size: 12px;
 }
 
-.auth-link{
-    color:#20B2AA
+.auth-link {
+    color: #20B2AA
 }

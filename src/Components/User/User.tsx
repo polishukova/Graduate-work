@@ -5,7 +5,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 export const User = () => {
     const username = useAppSelector(state => state.auth.userName)
-    
+
     if (username) {
         const nameSurnameArr = username.split(' ');
         const userInitials = (nameSurnameArr[0][0] + nameSurnameArr[1][0]).toUpperCase();
@@ -19,7 +19,7 @@ export const User = () => {
     else
         return (
             <div className='user-wrapper'>
-                <PersonIcon sx={{ color: "#20B2AA", fontSize: 40}}/>
+                <PersonIcon sx={{ color: "#20B2AA", fontSize: 40 }} />
                 <Link className='user-name' to='/auth'>Sign in</Link>
             </div>
         )

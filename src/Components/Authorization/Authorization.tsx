@@ -14,7 +14,8 @@ export const Authorization = () => {
     const navigate = useNavigate()
 
     return (
-        <div className='wrapper-auth container'>
+        <div className='wrapper-auth'>
+            <div className='container'>
             <Title />
             <form className='auth'>
                 <legend className='auth-title'>Sign In</legend>
@@ -28,6 +29,7 @@ export const Authorization = () => {
                 }}>Sign In</button>
                 <p className='auth-footer'>Don't have an account? <Link className='auth-link' to='/reg'>Sign Up</Link></p>
             </form>
+            </div>
         </div>
     )
 }

@@ -26,8 +26,8 @@ export const RenderOneFilm = () => {
     if (!oneFilm?.release_date) return null
     const ms = Date.parse(oneFilm?.release_date);
     const newDate = (new Date(ms)).toISOString()
-    .replace(/^([^T]+)T(.+)$/,'$1')
-    .replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1')
+        .replace(/^([^T]+)T(.+)$/, '$1')
+        .replace(/^(\d+)-(\d+)-(\d+)$/, '$3.$2.$1')
 
     console.log(oneFilm.release_date)
 
@@ -44,7 +44,7 @@ export const RenderOneFilm = () => {
                     <img src={IMG + oneFilm.poster_path} alt={'img'}></img>
                 </div>
                 <div className="one-film__favorites">
-                    <AddToFavorites filmId={oneFilm.id}/>
+                    <AddToFavorites filmId={oneFilm.id} />
                 </div>
             </div>
             <div className="one-film__info">

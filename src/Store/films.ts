@@ -32,7 +32,7 @@ export const filmsReducer = filmsSlice.reducer
 export const getFilmsThunk = createAsyncThunk(
     "films/getFilms",
     async ({ search = '' }: { search?: string }) => {
-        const films: OneFilm[] = search? await getFilmsBySearch({ 'search': search }) : (await getFilms()).results;
+        const films: OneFilm[] = search ? await getFilmsBySearch({ 'search': search }) : (await getFilms()).results;
         return films;
     }
 );

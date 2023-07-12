@@ -16,7 +16,7 @@ export type OneFilm = {
 
 export type OneFilmWithGenre = OneFilm & { genre: (string | undefined)[] };
 
-export type OneFilmWithFavorite = OneFilm & { favorite: (boolean)}
+export type OneFilmWithFavorite = OneFilm & { favorite: (boolean) }
 
 export type Response = {
     page: number,
@@ -36,7 +36,7 @@ export const getFilms = async (page?: number) => {
         }
     };
     const response = await fetch(filmsUrl, options);
-    const result: Response = await response.json();    
+    const result: Response = await response.json();
     return result
 };
 

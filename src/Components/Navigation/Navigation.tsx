@@ -5,14 +5,13 @@ import { MainPage } from "../MainPage/MainPage"
 
 export const Navigation = () => {
 
-
     return (
         <>
             <Routes>
                 <Route path='*' element={<MainPage />} />
                 <Route path='auth' element={<Authorization />} />
                 <Route path='reg' element={<Registration />} />
-                <Route path='films/*' element={<MainPage />}/>
+                <Route path='films/*' element={<MainPage />} />
             </Routes>
         </>
     )
