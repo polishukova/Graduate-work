@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { getFilms } from "../Films/getFilms"
 import './ShowMore.scss'
 import CircularProgress from "@mui/material/CircularProgress"
@@ -11,9 +11,10 @@ export const ShowMore = () => {
     const films = useAppSelector(store => store.films.films)
     const dispatch = useAppDispatch()
 
+useEffect(() => {getFilms(page).then(resp => dispatch(setFilms([...films, ...resp.results])))}, [page])
+
     return (
         <button className='show-more' onClick={() => {
-            getFilms(page).then(resp => dispatch(setFilms([...films, ...resp.results])))
             setPage(page + 1)
         }}>
             <span className="show-more-text">Show more</span><CircularProgress size={15} sx={{ color: "#20B2AA", size: 10 }} />

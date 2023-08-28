@@ -13,7 +13,7 @@ export const Menu = () => {
                 <Link to='/films' className='menu-item'><HomeIcon sx={{ color: "#20B2AA", fontSize: 26 }} /><p>Home</p></Link>
                 <Link to='/popular' className='menu-item'><LocalFireDepartmentIcon sx={{ color: "#20B2AA", fontSize: 26 }} /><p>Trends</p></Link>
                 <Link to='/favorite' className='menu-item'><BookmarkIcon sx={{ color: "#20B2AA", fontSize: 26 }} /><p>Favorites</p></Link>
-                <li className='menu-item'><SettingsIcon sx={{ color: "#20B2AA", fontSize: 26 }} /><p>Settings</p></li>
+                {/* <li className='menu-item'><SettingsIcon sx={{ color: "#20B2AA", fontSize: 26 }} /><p>Settings</p></li> */}
             </ul>
         </div>
     )

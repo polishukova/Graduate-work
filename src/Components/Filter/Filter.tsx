@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../Store/store"
 import './Filter.scss'
 import { setFilms } from "../../Store/films"
 import { FormControl, Select, MenuItem } from "@mui/material"
+import { getFilms } from "../Films/getFilms"
 
 export const Filter = () => {
     const isTouched = useAppSelector(state => state.filter.isTouched)
@@ -33,10 +34,13 @@ export const Filter = () => {
     }
 
     const [genre, setGenre] = useState('');
+    const [page, setPage] = useState(1);
 
     const handleChange = (event: { target: { value: SetStateAction<string> } }) => {
         setGenre(event.target.value);
     }
+
+useEffect(() => {getFilms(page, genre).then((resp) => dispatch(setFilms(resp.results)))}, [genre])
 
     const filtredFilmsArr = films.filter(film => film.genre_ids.includes(+genre))
 

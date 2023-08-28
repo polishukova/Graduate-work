@@ -1,4 +1,4 @@
-const FILMS = 'https://api.themoviedb.org/3/trending/movie/day';
+const FILMS = 'https://api.themoviedb.org/3/discover/movie';
 const GENRES = 'https://api.themoviedb.org/3/genre/movie/list';
 const FINDBYID = 'https://api.themoviedb.org/3/movie';
 const FINDBYSEARCH = 'https://api.themoviedb.org/3/search/movie';
@@ -25,9 +25,10 @@ export type Response = {
     total_results: number,
 };
 
-export const getFilms = async (page?: number) => {
+export const getFilms = async (page?: number, genre?: string) => {
     const filmsUrl = new URL(FILMS);
     if (page) filmsUrl.searchParams.set("page", String(page));
+    if (genre) filmsUrl.searchParams.set("with_genres", String(genre));
     const options = {
         method: 'GET',
         headers: {
@@ -129,4 +130,3 @@ export const getPopularFilms = async () => {
     const result: Response = await response.json();
     return result.results
 }
-
