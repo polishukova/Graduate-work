@@ -29,8 +29,6 @@ export const RenderOneFilm = () => {
         .replace(/^([^T]+)T(.+)$/, '$1')
         .replace(/^(\d+)-(\d+)-(\d+)$/, '$3.$2.$1')
 
-    console.log(oneFilm.release_date)
-
     const countries = oneFilm.production_countries.map(country => country.name).join(', ')
 
     const companies = oneFilm.production_companies.map(company => company.name).join(', ')
