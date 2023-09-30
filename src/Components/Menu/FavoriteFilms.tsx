@@ -13,6 +13,8 @@ export const FavoriteFilms = () => {
 
     const favFilms = films.filter(film => film.favorite)
 
+    
+
     return (
         <div className="films-wrapper">
             {!favFilms.length && <span className='not-found'>No favorite films</span>}

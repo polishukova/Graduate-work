@@ -14,11 +14,13 @@ export const Filter = () => {
 
     const filmsArr = films.slice(0)
     const sortByRating = filmsArr.sort((a, b) => b.vote_average - a.vote_average)
+    console.log("🚀 ~ file: Filter.tsx:17 ~ Filter ~ sortByRating:", sortByRating)
 
     const sortByYear = filmsArr.sort((a, b) => {
         const result = +(b.release_date.slice(0, 4)) - +(a.release_date.slice(0, 4))
         return result
     })
+    console.log("🚀 ~ file: Filter.tsx:23 ~ sortByYear ~ sortByYear:", sortByYear)
 
     const genres = useAppSelector(state => state.genres.genres)
 
@@ -35,12 +37,13 @@ export const Filter = () => {
 
     const [genre, setGenre] = useState('');
     const [page, setPage] = useState(1);
+    const [sortBy, setSortBy] = useState('');
 
     const handleChange = (event: { target: { value: SetStateAction<string> } }) => {
         setGenre(event.target.value);
     }
 
-useEffect(() => {getFilms(page, genre).then((resp) => dispatch(setFilms(resp.results)))}, [genre])
+    useEffect(() => { getFilms(page, genre, sortBy).then((resp) => dispatch(setFilms(resp.results))) }, [genre, sortBy])
 
     const filtredFilmsArr = films.filter(film => film.genre_ids.includes(+genre))
 
@@ -56,6 +59,16 @@ useEffect(() => {getFilms(page, genre).then((resp) => dispatch(setFilms(resp.res
                     <div className="filter-button-wrapper">
                         <button className="filter-sort-button" onClick={() => dispatch(setFilms(sortByRating))}>Rating</button>
                         <button className="filter-sort-button" onClick={() => dispatch(setFilms(sortByYear))}>Year</button>
+                    </div>
+                    <p>Sort all films by rating</p>
+                    <div className="filter-button-wrapper">
+                        <button className="filter-sort-button" onClick={() => setSortBy('vote_average.desc')}>⬆️</button>
+                        <button className="filter-sort-button" onClick={() => setSortBy('vote_average.asc')}>⬇️</button>
+                    </div>
+                    <p>Sort all films by year</p>
+                    <div className="filter-button-wrapper">
+                        <button className="filter-sort-button" onClick={() => setSortBy('primary_release_date.desc')}>⬆️</button>
+                        <button className="filter-sort-button" onClick={() => setSortBy('primary_release_date.asc')}>⬇️</button>
                     </div>
                     <p>Genres</p>
                     <div className="filter-by-genres">

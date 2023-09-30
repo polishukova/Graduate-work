@@ -2,7 +2,8 @@ const FILMS = 'https://api.themoviedb.org/3/discover/movie';
 const GENRES = 'https://api.themoviedb.org/3/genre/movie/list';
 const FINDBYID = 'https://api.themoviedb.org/3/movie';
 const FINDBYSEARCH = 'https://api.themoviedb.org/3/search/movie';
-const POPULARFILMS = 'https://api.themoviedb.org/3/movie/popular';
+const POPULARFILMS = 'https://api.themoviedb.org/3/movie/top_rated';
+const SORTBY = '&sort_by=';
 
 export type OneFilm = {
     genre_ids: number[],
@@ -25,10 +26,11 @@ export type Response = {
     total_results: number,
 };
 
-export const getFilms = async (page?: number, genre?: string) => {
+export const getFilms = async (page?: number, genre?: string, sort_by?: string) => {
     const filmsUrl = new URL(FILMS);
     if (page) filmsUrl.searchParams.set("page", String(page));
     if (genre) filmsUrl.searchParams.set("with_genres", String(genre));
+    if (sort_by) filmsUrl.searchParams.set("sort_by", String(sort_by));
     const options = {
         method: 'GET',
         headers: {

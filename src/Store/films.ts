@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { getFilms, getFilmsBySearch, getPopularFilms, OneFilm } from "../Components/Films/getFilms"
+import { DirtyLens } from "@mui/icons-material"
 
 const initialState: { films: OneFilm[] } = { films: [] }
 
@@ -14,6 +15,12 @@ export const filmsSlice = createSlice({
             const film = state.films.find(film => film.id === action.payload)
             if (!film) return
             film.favorite = !film.favorite
+//             let arr = []
+//             if (film.favorite) arr.push(film)
+//             if (!film.favorite) arr.
+//             localStorage.setItem('film', String(film?.id))
+//             JSON.parse(localStorage.getItem('film')) || [];
+// localStorage.setItem('result', JSON.stringify(arr));
         },
     },
     extraReducers(builder) {
