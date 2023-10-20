@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getFilms } from "../Films/getFilms"
+import { getFilms } from "../../Server/getFilms"
 import './ShowMore.scss'
 import CircularProgress from "@mui/material/CircularProgress"
 import { useAppDispatch, useAppSelector } from "../../Store/store"

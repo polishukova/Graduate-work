@@ -1,7 +1,9 @@
-import { useAppSelector } from "../../Store/store"
+import { useAppDispatch, useAppSelector } from "../../Store/store"
 import { RenderFilm } from "../Films/RenderFilm"
-import { OneGenre } from "../Films/getFilms"
+import { OneGenre } from "../../Server/getFilms"
 import '..//Films/AllFilms.scss'
+import { useEffect } from "react"
+import { getFavoriteThunk } from "../../Store/films"
 
 export const FavoriteFilms = () => {
     const films = useAppSelector(state => {
@@ -11,14 +13,15 @@ export const FavoriteFilms = () => {
         return state.films.films.map(film => ({ ...film, genre: genresIdsToNames(film.genre_ids) }))
     })
 
-    const favFilms = films.filter(film => film.favorite)
+    const dispatch = useAppDispatch()
 
-    
+    useEffect(() => {dispatch(getFavoriteThunk())}, [])
+    // const favFilms = films.filter(film => film.favorite)
 
     return (
         <div className="films-wrapper">
-            {!favFilms.length && <span className='not-found'>No favorite films</span>}
-            {favFilms.map(film => <RenderFilm oneFilm={film} key={film.id} />)}
+            {!films.length && <span className='not-found'>No favorite films</span>}
+            {films.map(film => <RenderFilm oneFilm={film} key={film.id} />)}
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import './AllFilms.scss'
-import { OneGenre, getFilms, getGenres } from './getFilms'
+import { OneGenre, getFilms, getGenres } from '../../Server/getFilms'
 import { RenderFilm } from './RenderFilm'
 import { useAppDispatch, useAppSelector } from '../../Store/store'
 import { setFilms } from '../../Store/films'

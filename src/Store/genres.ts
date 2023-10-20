@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { OneGenre } from "../Components/Films/getFilms"
+import { OneGenre } from "../Server/getFilms"
 
 const initialState: { genres: OneGenre[] } = { genres: [] }
 

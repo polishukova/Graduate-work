@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../Store/store"
 import { RenderFilm } from "../Films/RenderFilm"
-import { OneGenre } from "../Films/getFilms"
+import { OneGenre } from "../../Server/getFilms"
 import '..//Films/AllFilms.scss'
 import { getPopularThunk } from "../../Store/films"
 import { useEffect } from "react"

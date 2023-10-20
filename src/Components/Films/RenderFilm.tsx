@@ -1,4 +1,4 @@
-import { OneFilmWithGenre } from "./getFilms"
+import { OneFilmWithGenre } from "../../Server/getFilms"
 import './RenderFilm.scss'
 import { Link } from "react-router-dom"
 

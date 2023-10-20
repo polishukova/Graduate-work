@@ -3,7 +3,8 @@ const GENRES = 'https://api.themoviedb.org/3/genre/movie/list';
 const FINDBYID = 'https://api.themoviedb.org/3/movie';
 const FINDBYSEARCH = 'https://api.themoviedb.org/3/search/movie';
 const POPULARFILMS = 'https://api.themoviedb.org/3/movie/top_rated';
-const SORTBY = '&sort_by=';
+const FAVORITEFILMS = 'https://api.themoviedb.org/3/account/19830313/favorite/movies'
+
 
 export type OneFilm = {
     genre_ids: number[],
@@ -16,8 +17,6 @@ export type OneFilm = {
 };
 
 export type OneFilmWithGenre = OneFilm & { genre: (string | undefined)[] };
-
-export type OneFilmWithFavorite = OneFilm & { favorite: (boolean) }
 
 export type Response = {
     page: number,
@@ -73,6 +72,7 @@ export const getFilm = async (filmId: string) => {
     };
     const response = await fetch(filmsUrl, options);
     const result: FilmForSinglePage = await response.json();
+    console.log("🚀 ~ file: getFilms.ts:75 ~ getFilm ~ result:", result)
     return result
 }
 
@@ -123,6 +123,22 @@ export const getPopularFilms = async () => {
     const options = {
         method: 'GET',
         headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhYzc1ZDIyMDYyMDY2NGFkZjM5MGZjYTU1NjIwMDA0ZiIsInN1YiI6IjY0N2M3NjVlMGUyOWEyMDExNmFkNDU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ihZhctfHnZABpjMVWFHZMMvNEZG6rMdJ5plj0SAbsag'
+        }
+    };
+
+    const response = await fetch(filmsUrl, options);
+    const result: Response = await response.json();
+    return result.results
+}
+
+
+export const getFavoriteFilms = async () => {
+    const filmsUrl = new URL(FAVORITEFILMS);
+    const options = {
+        method: 'GET',
+        headers: { 
             accept: 'application/json',
             Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhYzc1ZDIyMDYyMDY2NGFkZjM5MGZjYTU1NjIwMDA0ZiIsInN1YiI6IjY0N2M3NjVlMGUyOWEyMDExNmFkNDU2YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ihZhctfHnZABpjMVWFHZMMvNEZG6rMdJ5plj0SAbsag'
         }

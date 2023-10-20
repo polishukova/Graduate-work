@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom"
 import { IMG } from "./RenderFilm"
 import { useEffect, useState } from "react"
-import { FilmForSinglePage, getFilm } from "./getFilms"
+import { FilmForSinglePage, getFilm } from "../../Server/getFilms"
 import './OneFilm.scss'
 import { AddToFavorites } from "../AddToFavorites/AddToFavorites"
-
 
 export const RenderOneFilm = () => {
     const [oneFilm, setOneFilm] = useState<FilmForSinglePage>()

@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "../../Store/store"
 import './Filter.scss'
 import { setFilms } from "../../Store/films"
 import { FormControl, Select, MenuItem } from "@mui/material"
-import { getFilms } from "../Films/getFilms"
+import { getFilms } from "../../Server/getFilms"
 
 export const Filter = () => {
     const isTouched = useAppSelector(state => state.filter.isTouched)
@@ -14,13 +14,11 @@ export const Filter = () => {
 
     const filmsArr = films.slice(0)
     const sortByRating = filmsArr.sort((a, b) => b.vote_average - a.vote_average)
-    console.log("🚀 ~ file: Filter.tsx:17 ~ Filter ~ sortByRating:", sortByRating)
 
     const sortByYear = filmsArr.sort((a, b) => {
         const result = +(b.release_date.slice(0, 4)) - +(a.release_date.slice(0, 4))
         return result
     })
-    console.log("🚀 ~ file: Filter.tsx:23 ~ sortByYear ~ sortByYear:", sortByYear)
 
     const genres = useAppSelector(state => state.genres.genres)
 
