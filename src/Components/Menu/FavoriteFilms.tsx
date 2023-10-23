@@ -16,7 +16,6 @@ export const FavoriteFilms = () => {
     const dispatch = useAppDispatch()
 
     useEffect(() => {dispatch(getFavoriteThunk())}, [])
-    // const favFilms = films.filter(film => film.favorite)
 
     return (
         <div className="films-wrapper">

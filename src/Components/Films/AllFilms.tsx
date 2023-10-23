@@ -17,7 +17,10 @@ export const AllFilms = () => {
 
     const dispatch = useAppDispatch()
 
-    useEffect(() => { getFilms().then((resp) => dispatch(setFilms(resp.results))) }, [])
+    useEffect(() => { getFilms().then((resp) => {
+        console.log(filmsList)
+        dispatch(setFilms(resp.results))}
+        ) }, [])
 
     useEffect(() => { getGenres().then((resp) => dispatch(setGenres(resp))) }, [])
 

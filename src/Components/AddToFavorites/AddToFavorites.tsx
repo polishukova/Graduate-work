@@ -35,13 +35,13 @@ export const AddToFavorites = ({ filmId }: Favorites) => {
             <button className="favorite-button" onClick={() => {
                 setIsAdded(true)
                 addFavorites(addFilm)
-            }}><BookmarkIcon sx={{ color: "#AFB2B6", fontSize: 26 }} /></button>
+            }}><BookmarkIcon sx={isFav?{ color: "#AFB2B6", fontSize: 26 }:{ color: "#20B2AA", fontSize: 26 }} /></button>
             <button className="favorite-button" onClick={() => {
                 navigator.clipboard.writeText(window.location.href)
                 setIsCopied(true)
             }}><ShareIcon sx={{ color: "#AFB2B6", fontSize: 26 }} /></button>
             {isCopied && <p className='popup'>Copied</p>}
-            {isAdded && <p className='popup'>Added</p>}
+            {isAdded && (isFav? <p className='popup'>Added</p>: <p className='popup'>Deleted</p>)}
         </>
     )
 }
